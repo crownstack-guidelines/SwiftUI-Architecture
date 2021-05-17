@@ -52,6 +52,10 @@
 		7110846A265257DB00CE8342 /* SwiftUI-Architecture */ = {
 			isa = PBXGroup;
 			children = (
+				7110847E265264D200CE8342 /* Model */,
+				7110847D265264CD00CE8342 /* View */,
+				7110847C265264BB00CE8342 /* ViewModel */,
+				7110847B2652582900CE8342 /* Theme */,
 				7110846B265257DB00CE8342 /* SwiftUI_ArchitectureApp.swift */,
 				7110846D265257DB00CE8342 /* ContentView.swift */,
 				7110846F265257F300CE8342 /* Assets.xcassets */,
@@ -67,6 +71,34 @@
 				71108472265257F300CE8342 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7110847B2652582900CE8342 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		7110847C265264BB00CE8342 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7110847D265264CD00CE8342 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7110847E265264D200CE8342 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
