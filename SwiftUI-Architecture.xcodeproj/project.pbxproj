@@ -14,6 +14,10 @@
 		711084802652873300CE8342 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110847F2652873300CE8342 /* Typography.swift */; };
 		7110848326528B4100CE8342 /* ColorPalatte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110848226528B4100CE8342 /* ColorPalatte.swift */; };
 		7110848726528BBD00CE8342 /* ColorPalette.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7110848626528BBD00CE8342 /* ColorPalette.xcassets */; };
+		711084922653AC0500CE8342 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711084912653AC0500CE8342 /* ParameterEncoding.swift */; };
+		711084962653AD1A00CE8342 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711084952653AD1A00CE8342 /* NetworkError.swift */; };
+		711084992653AD5F00CE8342 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711084982653AD5F00CE8342 /* URLParameterEncoder.swift */; };
+		7110849C2653AFEE00CE8342 /* JSONParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110849B2653AFEE00CE8342 /* JSONParameterEncoding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		7110847F2652873300CE8342 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		7110848226528B4100CE8342 /* ColorPalatte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalatte.swift; sourceTree = "<group>"; };
 		7110848626528BBD00CE8342 /* ColorPalette.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorPalette.xcassets; sourceTree = "<group>"; };
+		711084912653AC0500CE8342 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		711084952653AD1A00CE8342 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		711084982653AD5F00CE8342 /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
+		7110849B2653AFEE00CE8342 /* JSONParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +69,7 @@
 				7110847E265264D200CE8342 /* Model */,
 				7110847D265264CD00CE8342 /* View */,
 				7110847C265264BB00CE8342 /* ViewModel */,
+				711084892653A9DC00CE8342 /* Networking */,
 				7110847B2652582900CE8342 /* Theme */,
 				7110846B265257DB00CE8342 /* SwiftUI_ArchitectureApp.swift */,
 				7110846D265257DB00CE8342 /* ContentView.swift */,
@@ -116,6 +125,49 @@
 				7110848626528BBD00CE8342 /* ColorPalette.xcassets */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		711084892653A9DC00CE8342 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7110848D2653AA7800CE8342 /* EndPoint */,
+				7110848C2653AA7100CE8342 /* Manager */,
+				7110848B2653AA5900CE8342 /* Service */,
+				7110848A2653AA4B00CE8342 /* Encoding */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		7110848A2653AA4B00CE8342 /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				711084912653AC0500CE8342 /* ParameterEncoding.swift */,
+				711084952653AD1A00CE8342 /* NetworkError.swift */,
+				711084982653AD5F00CE8342 /* URLParameterEncoder.swift */,
+				7110849B2653AFEE00CE8342 /* JSONParameterEncoding.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		7110848B2653AA5900CE8342 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		7110848C2653AA7100CE8342 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7110848D2653AA7800CE8342 /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EndPoint;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,8 +240,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7110849C2653AFEE00CE8342 /* JSONParameterEncoding.swift in Sources */,
 				7110846E265257DB00CE8342 /* ContentView.swift in Sources */,
 				711084802652873300CE8342 /* Typography.swift in Sources */,
+				711084922653AC0500CE8342 /* ParameterEncoding.swift in Sources */,
+				711084962653AD1A00CE8342 /* NetworkError.swift in Sources */,
+				711084992653AD5F00CE8342 /* URLParameterEncoder.swift in Sources */,
 				7110846C265257DB00CE8342 /* SwiftUI_ArchitectureApp.swift in Sources */,
 				7110848326528B4100CE8342 /* ColorPalatte.swift in Sources */,
 			);

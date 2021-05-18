@@ -11,7 +11,16 @@ import SwiftUI
 struct SwiftUI_ArchitectureApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+          ContentView()
+            .environment(\.font, Font.Typography.sizingFont(font: .main, size: .title))
         }
     }
+}
+
+struct SwiftUI_ArchitectureApp_Previews: PreviewProvider {
+  static var previews: some View {
+    ContentView()
+      .environment(\.font, Font.Typography.sizingFont(font: .main, size: .title))
+      .environment(\.colorScheme, .dark)
+  }
 }
