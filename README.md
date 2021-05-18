@@ -32,4 +32,15 @@ Create a new color set inside this file and set the color based on appearance (d
 
 You can use these color palatte in code like :- 
 ![Screenshot 2021-05-17 at 7 04 45 PM](https://user-images.githubusercontent.com/81283951/118497766-ff119900-b742-11eb-899c-2fb7bc8d5428.png)
+
+Now we have created the theme, we can use it in our view by following example - 
+
+![Screenshot 2021-05-18 at 11 25 03 AM](https://user-images.githubusercontent.com/81283951/118598611-f6b17080-b7cb-11eb-963b-4a640fe30bd2.png)
+
+Let's check how our view looks now on each mode (light or dark) :-
+
+![Screenshot 2021-05-18 at 11 17 47 AM](https://user-images.githubusercontent.com/81283951/118598701-219bc480-b7cc-11eb-8e48-421fbd7d934c.png)
+![Screenshot 2021-05-18 at 11 17 26 AM](https://user-images.githubusercontent.com/81283951/118598724-29f3ff80-b7cc-11eb-9299-21c631930f90.png)
+ 
+
  
