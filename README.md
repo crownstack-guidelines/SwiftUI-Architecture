@@ -2,6 +2,11 @@
 This repo guides you to setup the architecture and can be used as a starter kit for your app in SwiftUI.
 Some important questions that one should ask before starting building app.Which will make your work easier. 
 
+## App Theme
+
+Inspired by react-native styled component themeing system. iOS can skip reading this (https://styled-system.com/).
+We took a reference from (https://www.freecodecamp.org/news/how-to-build-design-system-with-swiftui/)
+
 App theme is the important part of an app and to make it consistent throughout an app is necessary.
 
 But how to manage theme of your app?
