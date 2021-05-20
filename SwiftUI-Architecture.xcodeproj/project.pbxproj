@@ -23,10 +23,11 @@
 		711084A52653B3BF00CE8342 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711084A42653B3BF00CE8342 /* EndPointType.swift */; };
 		711084A92653DA9900CE8342 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711084A82653DA9900CE8342 /* Router.swift */; };
 		711084AD2653E1B500CE8342 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711084AC2653E1B500CE8342 /* NetworkManager.swift */; };
-		711084B32653E4DB00CE8342 /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711084B22653E4DB00CE8342 /* LoginApi.swift */; };
-		711084B62653E7B600CE8342 /* NewsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711084B52653E7B600CE8342 /* NewsApi.swift */; };
+		711084B32653E4DB00CE8342 /* LoginEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711084B22653E4DB00CE8342 /* LoginEndPoint.swift */; };
+		711084B62653E7B600CE8342 /* NewsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711084B52653E7B600CE8342 /* NewsEndPoint.swift */; };
 		711084BA2653E86200CE8342 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711084B92653E86200CE8342 /* LoginViewModel.swift */; };
 		711084BD2653ED2C00CE8342 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711084BC2653ED2C00CE8342 /* User.swift */; };
+		711AE7C62656734B00CCF455 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711AE7C52656734B00CCF455 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,10 +49,11 @@
 		711084A42653B3BF00CE8342 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		711084A82653DA9900CE8342 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		711084AC2653E1B500CE8342 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		711084B22653E4DB00CE8342 /* LoginApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
-		711084B52653E7B600CE8342 /* NewsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApi.swift; sourceTree = "<group>"; };
+		711084B22653E4DB00CE8342 /* LoginEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndPoint.swift; sourceTree = "<group>"; };
+		711084B52653E7B600CE8342 /* NewsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsEndPoint.swift; sourceTree = "<group>"; };
 		711084B92653E86200CE8342 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		711084BC2653ED2C00CE8342 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		711AE7C52656734B00CCF455 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		7110846A265257DB00CE8342 /* SwiftUI-Architecture */ = {
 			isa = PBXGroup;
 			children = (
+				711AE7C02656491F00CCF455 /* Extensions */,
 				7110847E265264D200CE8342 /* Model */,
 				7110847D265264CD00CE8342 /* View */,
 				7110847C265264BB00CE8342 /* ViewModel */,
@@ -184,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				711084AC2653E1B500CE8342 /* NetworkManager.swift */,
+				711AE7C52656734B00CCF455 /* Reachability.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -191,10 +195,17 @@
 		7110848D2653AA7800CE8342 /* EndPoint */ = {
 			isa = PBXGroup;
 			children = (
-				711084B22653E4DB00CE8342 /* LoginApi.swift */,
-				711084B52653E7B600CE8342 /* NewsApi.swift */,
+				711084B22653E4DB00CE8342 /* LoginEndPoint.swift */,
+				711084B52653E7B600CE8342 /* NewsEndPoint.swift */,
 			);
 			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		711AE7C02656491F00CCF455 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +283,7 @@
 				711084802652873300CE8342 /* Typography.swift in Sources */,
 				711084AD2653E1B500CE8342 /* NetworkManager.swift in Sources */,
 				711084BA2653E86200CE8342 /* LoginViewModel.swift in Sources */,
-				711084B32653E4DB00CE8342 /* LoginApi.swift in Sources */,
+				711084B32653E4DB00CE8342 /* LoginEndPoint.swift in Sources */,
 				711084922653AC0500CE8342 /* ParameterEncoding.swift in Sources */,
 				711084BD2653ED2C00CE8342 /* User.swift in Sources */,
 				711084A92653DA9900CE8342 /* Router.swift in Sources */,
@@ -281,9 +292,10 @@
 				7110849F2653B22F00CE8342 /* HTTPMethod.swift in Sources */,
 				711084A22653B28000CE8342 /* HTTPTask.swift in Sources */,
 				711084992653AD5F00CE8342 /* URLParameterEncoder.swift in Sources */,
+				711AE7C62656734B00CCF455 /* Reachability.swift in Sources */,
 				7110846C265257DB00CE8342 /* SwiftUI_ArchitectureApp.swift in Sources */,
 				7110848326528B4100CE8342 /* ColorPalatte.swift in Sources */,
-				711084B62653E7B600CE8342 /* NewsApi.swift in Sources */,
+				711084B62653E7B600CE8342 /* NewsEndPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

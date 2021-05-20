@@ -12,28 +12,39 @@ class LoginViewModel:ObservableObject {
 
   @Published var username = ""
   @Published var password = ""
+  @Published var isDisconnected:Bool = false
 
   @Published var user:User!
 
   private var cancellable:AnyCancellable?
-  private var networkManager:NetworkManager
+  private var networkManager:Networkable
 
-  init(networkManager:NetworkManager) {
+
+  init(networkManager:Networkable) {
     self.networkManager = networkManager
+    loginUser()
+  }
+
+  deinit {
+    cancellable?.cancel()
   }
 
   func loginUser() {
-    cancellable =  self.networkManager.loginPublisher(username: username, password: password)
-      .sink { value in
-        switch value {
-        case .failure(let error):
-          print(error.localizedDescription)
-        case .finished:
-          break
-        }
-      } receiveValue: { (user) in
-        self.user = user
+      if NetworkManager.isConnected() {
+        isDisconnected = false
+        cancellable =  self.networkManager.loginPublisher(username: username, password: password)
+          .sink { value in
+            switch value {
+            case .failure(let error):
+              print(error.localizedDescription)
+            case .finished:
+              break
+            }
+          } receiveValue: { (user) in
+            self.user = user
+          }
+      }else{
+        isDisconnected = true
       }
   }
-
 }

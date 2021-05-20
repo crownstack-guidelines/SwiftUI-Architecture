@@ -7,11 +7,12 @@
 
 import Foundation
 
-enum LoginApi {
+/// Below are for examples you can change it based on your API Endpoint
+enum LoginEndPoint {
   case login(username:String,password:String)
 }
 
-extension LoginApi:EndPointType {
+extension LoginEndPoint:EndPointType {
   var baseUrl: URL {
     URL(string: NetworkManager.environment.getBaseUrl())!
   }
@@ -27,7 +28,8 @@ extension LoginApi:EndPointType {
   var httpTask: HTTPTask {
     switch self {
     case .login(let username, let password):
-      return .requestParametersAndHeaders(bodyParameters: ["username":username,"password":password], urlParameters: nil, additionalHeaders: nil)
+      let params = ["username":username,"password":password]
+      return .requestParametersAndHeaders(bodyParameters:params, urlParameters: nil, additionalHeaders: nil)
     }
 
   }

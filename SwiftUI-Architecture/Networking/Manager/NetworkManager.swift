@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Network
 
 enum Environment:String {
     case production = "production"
@@ -23,22 +24,74 @@ enum Environment:String {
       return "https://api.staging.example.com"
     }
   }
-  
 }
 
-struct NetworkManager {
+protocol Networkable {
+  static var environment:Environment {get}
+  func loginPublisher(username:String,password:String) -> AnyPublisher<User,NetworkError>
+  func getBussinessNewsPublisher<T:Decodable>(of country:String) -> AnyPublisher<T,NetworkError>
+  func downloadImagePublisher(highResUrl:URL,lowResUrl:URL) -> AnyPublisher<Data,NetworkError>
+}
 
-  static let environment:Environment = .staging
+extension Networkable {
+  static var environment:Environment {
+    .staging
+  }
+}
 
-  private var newsRouter = Router<NewsApi>()
-  private var loginRouter = Router<LoginApi>()
 
-  mutating func loginPublisher(username:String,password:String) -> AnyPublisher<User,Error> {
+class NetworkManager {
+
+  private var newsRouter = Router<NewsEndPoint>()
+  private var loginRouter = Router<LoginEndPoint>()
+
+  static func isConnected() -> Bool {
+    do {
+      return try Reachability().isConnectedToNetwork
+    } catch {
+      return false
+    }
+  }
+
+  deinit {}
+
+}
+
+extension NetworkManager:Networkable {
+
+  func loginPublisher(username:String,password:String) -> AnyPublisher<User,NetworkError> {
     loginRouter.request(.login(username: username, password: password))
   }
 
-  mutating func getBussinessNewsPublisher<T:Decodable>(of country:String) -> AnyPublisher<T,Error> {
+  func getBussinessNewsPublisher<T:Decodable>(of country:String) -> AnyPublisher<T,NetworkError> {
     newsRouter.request(.bussiness(country: country))
   }
 
+  func downloadImagePublisher(highResUrl:URL,lowResUrl:URL) -> AnyPublisher<Data,NetworkError>  {
+    let session:URLSession = URLSession.shared
+
+    var urlRequest = URLRequest(url: highResUrl, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 10.0)
+    urlRequest.allowsConstrainedNetworkAccess = false
+    return session.dataTaskPublisher(for: urlRequest)
+      .tryCatch { (error) -> URLSession.DataTaskPublisher in
+        guard error.networkUnavailableReason == .constrained else { throw error }
+        return session.dataTaskPublisher(for: lowResUrl)
+      }
+      .tryMap { data, response -> Data in
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else {
+          throw NetworkError.downloadFailed
+        }
+        return data
+      }
+      .mapError({ (error) in
+        return NetworkError.downloadFailed
+      })
+      .receive(on: DispatchQueue.main)
+      .eraseToAnyPublisher()
+  }
 }
+
+
+
+

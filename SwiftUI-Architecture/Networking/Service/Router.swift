@@ -8,29 +8,27 @@
 import Foundation
 import Combine
 
-//typealias NetworkRouterCompletion = (_ data: Data?,_ response: URLResponse?,_ error: Error?)->()
-
 protocol NetworkRouter {
     associatedtype EndPoint:EndPointType
-  mutating func request<T>(_ route:EndPoint) ->AnyPublisher<T,Error> where T:Decodable
+  mutating func request<T>(_ route:EndPoint) ->AnyPublisher<T,NetworkError> where T:Decodable
 }
 
 struct Router<EndPoint:EndPointType>: NetworkRouter {
-  private var task:URLSession.DataTaskPublisher?
 
-  mutating func request<T>(_ route: EndPoint) -> AnyPublisher<T,Error> where T:Decodable {
-        let session = URLSession.shared
+  mutating func request<T>(_ route: EndPoint) -> AnyPublisher<T,NetworkError> where T:Decodable {
         do {
             let request = try self.buildRequest(from: route)
-          return session.dataTaskPublisher(for: request)
+          return URLSession.shared.dataTaskPublisher(for: request)
             .map { $0.data }
             .decode(type: T.self, decoder: JSONDecoder())
+            .mapError{ (error) in
+              return NetworkError.decodingFailed
+            }
             .eraseToAnyPublisher()
         }catch {
-          return Fail(error: error).eraseToAnyPublisher()
+          return Fail(error: NetworkError.buildRequestFailed).eraseToAnyPublisher()
         }
     }
-
 
     fileprivate func buildRequest(from route:EndPointType) throws -> URLRequest {
 
@@ -81,3 +79,4 @@ struct Router<EndPoint:EndPointType>: NetworkRouter {
     }
 
 }
+

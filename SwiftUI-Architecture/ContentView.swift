@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+  @ObservedObject var loginViewModel = LoginViewModel(networkManager: NetworkManager())
+
     var body: some View {
       VStack {
         Text("Swift UI")
@@ -15,7 +17,10 @@ struct ContentView: View {
           .padding()
         Text("SwiftUI is an innovative, exceptionally simple way to build user interfaces across all Apple platforms with the power of Swift")
         Spacer()
-      }.frame(maxWidth:.infinity)
+      }.alert(isPresented: $loginViewModel.isDisconnected, content: {
+        Alert(title: Text("No Internet"), message: Text("Please check network connection"), dismissButton: .cancel())
+      })
+      .frame(maxWidth:.infinity)
       .background(Color.Token.backgroundTheme)
       .edgesIgnoringSafeArea(.top)
     }

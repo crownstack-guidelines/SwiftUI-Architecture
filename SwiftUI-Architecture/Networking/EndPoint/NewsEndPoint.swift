@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum NewsApi {
+enum NewsEndPoint {
   case bussiness(country:String)
 }
 
-extension NewsApi:EndPointType {
+extension NewsEndPoint:EndPointType {
   var baseUrl: URL {
     return URL(string: NetworkManager.environment.getBaseUrl())!
   }
